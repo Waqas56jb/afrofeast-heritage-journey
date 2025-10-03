@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import type { Route } from "next";
 import QuizCard from "@/features/quiz/QuizCard";
 
 type Option = {
@@ -13,7 +14,7 @@ type QuizStepProps = {
   step: number;
   total: number;
   options: Option[];
-  nextHref?: string;
+  nextHref?: Route;
 };
 
 export default function QuizStep({ question, step, total, options, nextHref }: QuizStepProps) {
