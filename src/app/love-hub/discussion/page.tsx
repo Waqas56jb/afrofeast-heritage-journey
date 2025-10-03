@@ -45,7 +45,7 @@ export default function DiscussionDetailPage() {
                   <div className="text-sm text-teal-900">{idx === 0 ? "@AmaraJ" : "@MamaEfua"}</div>
                   <p className="mt-1 text-sm text-gray-700">
                     {idx === 0
-                      ? "I'm planning my heritage trip to Ghana and wondering about dating dynamics. As an African American woman, what should I know about relationships and cultural expectations if I meet someone special there? Any advice from those who've navigated this?"
+                      ? "I&apos;m planning my heritage trip to Ghana and wondering about dating dynamics. As an African American woman, what should I know about relationships and cultural expectations if I meet someone special there? Any advice from those who've navigated this?"
                       : "Beautiful question! Remember you're connecting with family and community. I'm happy to offer guidance if you'd like deeper support."}
                   </p>
                   <div className="mt-2 flex items-center gap-4 text-xs text-gray-500">
