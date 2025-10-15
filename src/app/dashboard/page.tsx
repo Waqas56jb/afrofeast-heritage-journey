@@ -1,304 +1,182 @@
+import Image from "next/image";
+import { WhatsappIcon, HomeIcon, InfoIcon, UsersIcon, LogInIcon } from "@/components/icons";
+
 export default function DashboardPage() {
   return (
-    <div className="min-h-[100dvh] bg-teal-950 text-white">
-      <div className="mx-auto max-w-6xl">
-        <header className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-amber-400 text-teal-900">
-              🌿
-            </div>
-            <span className="font-medium">OurRoots.Africa</span>
+    <main className="min-h-screen bg-[#1F5A55] text-white">
+      {/* Top bar */}
+      <header className="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-sm border border-white/30 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66] text-sm">
+            🌴
           </div>
-          <div className="hidden items-center gap-3 text-sm md:flex">
-            <div className="rounded-full bg-white/10 px-3 py-1 text-white/80">
-              Heritage Seeker • AfroFeast 78
-            </div>
-            <img src="/profile.jpg" alt="Profile" className="h-8 w-8 rounded-full object-cover" />
-          </div>
-        </header>
+          <span className="text-white/95">OurRoots.Africa</span>
+        </div>
+        <nav className="flex items-center gap-6 text-[13px] text-white/90">
+          <a href="/" className="hover:underline inline-flex items-center gap-2">
+            <HomeIcon /> Home
+          </a>
+          <a href="/about" className="hover:underline inline-flex items-center gap-2">
+            <InfoIcon /> About
+          </a>
+          <a href="/community" className="hover:underline inline-flex items-center gap-2">
+            <UsersIcon /> Community
+          </a>
+          <a
+            href="/login"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-1.5 text-white/90 hover:bg-white/10"
+          >
+            <LogInIcon /> Login
+          </a>
+        </nav>
+      </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-[220px_1fr]">
-          <aside className="hidden min-h-[calc(100dvh-56px)] border-r border-white/10 bg-teal-950/70 p-4 md:flex md:flex-col">
-            <nav className="space-y-2 text-sm">
-              <a
-                className="flex items-center gap-3 rounded px-3 py-2 text-white/80 hover:bg-white/5"
-                href="#"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M3 9l9-7 9 7" />
-                  <path d="M9 22V12h6v10" />
-                </svg>
-                Home
-              </a>
-              <a className="flex items-center gap-3 rounded bg-white/10 px-3 py-2" href="#">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 20l9-5-9-5-9 5 9 5z" />
-                  <path d="M12 12l9-5-9-5-9 5 9 5z" />
-                </svg>
-                For You
-              </a>
-              <a
-                className="flex items-center gap-3 rounded px-3 py-2 text-white/80 hover:bg-white/5"
-                href="/journey"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M3 9l9-7 9 7" />
-                  <path d="M9 22V12h6v10" />
-                </svg>
-                My Journey
-              </a>
-              <a
-                className="flex items-center gap-3 rounded px-3 py-2 text-white/80 hover:bg-white/5"
-                href="#"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-                Community
-              </a>
-              <a
-                className="flex items-center gap-3 rounded px-3 py-2 text-white/80 hover:bg-white/5"
-                href="#"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="3" y="6" width="18" height="14" rx="2" />
-                  <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                </svg>
-                Reading List
-              </a>
-            </nav>
-            <div className="mt-3 mb-2 h-px bg-white/10" />
-            <div className="space-y-2 text-sm">
-              <a
-                href="/reading/offline"
-                className="flex items-center gap-3 rounded px-3 py-2 text-white/80 hover:bg-white/5"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M9.09 9a3 3 0 1 1 5.83 1c0 2-3 2-3 4" />
-                  <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-                Help & Support
-              </a>
-              <a
-                href="#"
-                className="flex items-center gap-3 rounded px-3 py-2 text-white/80 hover:bg-white/5"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                  <polyline points="16 17 21 12 16 7" />
-                  <line x1="21" y1="12" x2="9" y2="12" />
-                </svg>
-                Logout
-              </a>
+      {/* Hero background image overlay */}
+      <div className="relative">
+        <Image
+          src="/landing.jpeg"
+          alt="Hero"
+          width={2400}
+          height={1200}
+          className="h-[520px] w-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="max-w-3xl px-6 text-center">
+            <div className="mx-auto mb-5 h-16 w-16 rounded bg-black/40 flex items-center justify-center">
+              🗿
             </div>
-          </aside>
-
-          <main className="min-h-[calc(100dvh-56px)] bg-teal-900/40 p-4 md:p-8">
-            <h1 className="flex items-center gap-2 text-2xl font-semibold text-white">
-              <span>🪶</span> Personalized for You
+            <h1 className="text-4xl font-semibold leading-snug">
+              Your Ghana heritage journey, guided.
             </h1>
-            <div className="mt-1 text-xs text-white/70">
-              Based on: Heritage Seeker • AfroFeast 78 • Reading behavior • Community activity
+            <p className="mt-3 text-white/85">
+              Take a 5-minute quiz to get your Afrofeast Score™ and a personalized heritage plan,
+              with guidance from our cultural consultants on WhatsApp.
+            </p>
+            <a
+              href="/quiz"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F4B942] px-6 py-3 text-[#1E332F] font-medium"
+            >
+              Start the Ghana Quiz →
+            </a>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-white/85">
+              <span>Personalized plans</span>
+              <span>•</span>
+              <span>Guided trips</span>
+              <span>•</span>
+              <span>Cultural focus</span>
+              <span>•</span>
+              <span>Trauma‑informed</span>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <section className="mt-6">
-              <h2 className="flex items-center gap-2 text-amber-300">
-                <span>🔥</span> Trending in Your Journey
-              </h2>
-              <div className="mt-3 rounded-2xl bg-teal-800/70 p-4 shadow ring-1 ring-black/20">
-                <div className="flex items-center gap-3 text-sm text-white/80">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-amber-300/20 text-amber-300">
-                    🎧
-                  </span>
-                  <div className="flex-1">
-                    <div className="text-white">Emotional Healing at Cape Coast</div>
-                    <div className="text-xs text-white/70">
-                      98% match • 15 min read • Audio available
-                    </div>
-                    <div className="mt-2 text-xs italic text-white/70">
-                      “life‑changing” ✨ 47 community votes
-                    </div>
-                  </div>
+      {/* How it works */}
+      <section className="bg-[#EEF2F3] text-[#28433F]">
+        <div className="mx-auto max-w-5xl px-6 py-16 text-center">
+          <h2 className="text-2xl font-medium">How It Works</h2>
+          <div className="mt-8 grid grid-cols-3 gap-6">
+            {["Take the Quiz", "Get Your Afrofeast Score™", "Begin Your Journey"].map((t, i) => (
+              <div key={t} className="flex flex-col items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F0AE3F] text-[#1E332F] font-semibold">
+                  {i + 1}
                 </div>
-                <div className="mt-3">
-                  <a
-                    href="/reading"
-                    className="inline-flex items-center rounded-full bg-amber-400 px-4 py-2 text-sm font-medium text-teal-900"
-                  >
-                    Start Reading →
-                  </a>
-                </div>
+                <div>{t}</div>
               </div>
-            </section>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <section className="mt-6">
-              <h2 className="flex items-center gap-2 text-amber-300">
-                <span>🟡</span> Because you highlighted "Golden Stool"
-              </h2>
-              <div className="mt-3 rounded-2xl bg-teal-800/60 p-4 shadow ring-1 ring-black/20">
-                <div className="text-white">Sacred Objects & Spiritual Power</div>
-                <div className="text-xs text-white/70">
-                  92% match • 18 min read • Video included
-                </div>
-                <p className="mt-2 text-sm text-white/80">
-                  Includes rare footage from the Manhyia Palace Museum archives.
+      {/* Guides */}
+      <section className="bg-[#2A685F] py-16">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <h3 className="text-2xl font-medium text-white/95">Meet Your Heritage Guides</h3>
+          <p className="mt-2 text-white/80">
+            Whatever your connection to Ghana, we have a guided path for you. Which one are you?
+          </p>
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {["Heritage Seeker", "Cultural Explorer", "Curious Traveller"].map((title) => (
+              <div
+                key={title}
+                className="rounded-xl bg-[#2F6C66] p-6 text-left shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
+              >
+                <div
+                  className="mx-auto -mt-12 mb-4 h-16 w-16 rounded-full border-4 border-[#2F6C66] bg-center bg-cover"
+                  style={{ backgroundImage: "url(/landing.jpeg)" }}
+                />
+                <div className="text-[#E9B448]">{title}</div>
+                <p className="mt-2 text-white/85 text-sm">
+                  Immerse yourself in the vibrant culture, art, and traditions of Ghana.
                 </p>
-                <div className="mt-3">
-                  <a
-                    href="#"
-                    className="inline-flex items-center rounded-full bg-amber-400/90 px-3 py-2 text-sm font-medium text-teal-900"
-                  >
-                    Watch & Read →
-                  </a>
-                </div>
-              </div>
-            </section>
-
-            <section className="mt-6">
-              <h2 className="flex items-center gap-2 text-amber-300">
-                <span>⭐</span> Popular with Heritage Seekers
-              </h2>
-              <div className="mt-3 rounded-2xl bg-teal-800/60 p-4 shadow ring-1 ring-black/20">
-                <div className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded bg-amber-300/20 text-amber-300">
-                    📚
-                  </span>
-                  <div className="flex-1">
-                    <div className="text-white">Preparing for Ancestral Encounters</div>
-                    <div className="text-xs text-white/70">89% match • 22 min read</div>
-                    <div className="mt-2 text-xs italic text-white/70">
-                      “helped me process my emotions before my trip.”
-                    </div>
-                    <div className="mt-3">
-                      <button className="rounded-full border border-amber-300/60 px-3 py-1 text-xs text-amber-300">
-                        Add to Reading List ✚
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section className="mt-8">
-              <h2 className="flex items-center gap-2 text-amber-300">
-                <span>🌐</span> External Resources
-              </h2>
-              <div className="mt-3 space-y-3">
-                <div className="rounded-2xl bg-teal-800/60 p-4 shadow ring-1 ring-black/20">
-                  <div className="text-white">"Homegoing" by Yaa Gyasi</div>
-                  <p className="text-xs text-white/70">
-                    A powerful novel exploring similar themes of heritage and separation.
-                  </p>
-                  <a href="#" className="mt-2 inline-block text-xs text-amber-300">
-                    View on Amazon ↗
-                  </a>
-                </div>
-                <div className="rounded-2xl bg-teal-800/60 p-4 shadow ring-1 ring-black/20">
-                  <div className="text-white">Ghana's Heritage Tourism Boom</div>
-                  <p className="text-xs text-white/70">
-                    A recent article from the Afrofeast blog on the rise of heritage travel.
-                  </p>
-                  <a href="#" className="mt-2 inline-block text-xs text-amber-300">
-                    Read External ↗
-                  </a>
-                </div>
-              </div>
-            </section>
-
-            <section className="mt-8">
-              <h2 className="flex items-center gap-2 text-amber-300">
-                <span>🎓</span> Academic Deep Dive
-              </h2>
-              <div className="mt-3 rounded-2xl bg-teal-800/60 p-4 shadow ring-1 ring-black/20">
-                <div className="text-white">Trauma & Heritage Tourism: A Case Study</div>
-                <p className="text-xs text-white/70">
-                  A research paper from the University of Ghana's history department.
-                </p>
-                <a href="#" className="mt-2 inline-block text-xs text-amber-300">
-                  Access PDF ↗
+                <a
+                  href="/quiz"
+                  className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F0AE3F] px-5 py-2 text-[#1E332F]"
+                >
+                  Start Quiz
                 </a>
               </div>
-            </section>
-
-            <div className="mt-10 flex items-center justify-center text-xs text-white/60">
-              <button className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 py-2 text-white/80">
-                ⚙ Customize Recommendations
-              </button>
-            </div>
-          </main>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <footer className="border-t border-white/10 px-4 py-4 text-center text-xs text-white/60">
+      {/* WhatsApp CTA */}
+      <section className="bg-[#EEF2F3] text-[#28433F]">
+        <div className="mx-auto max-w-6xl items-center gap-10 px-6 py-16 md:flex">
+          <div className="flex items-center justify-center md:block">
+            <div className="h-20 w-20 rounded-full border-8 border-[#CDE7D9] flex items-center justify-center bg-white">
+              <WhatsappIcon size={34} />
+            </div>
+          </div>
+          <div className="mt-6 flex-1 md:mt-0">
+            <h3 className="text-2xl font-medium">Real human guidance via WhatsApp</h3>
+            <p className="mt-2 text-[#5A6B6A]">
+              Our cultural consultants are with you every step of the way, offering personalized
+              support and insights throughout your journey.
+            </p>
+          </div>
+          <div className="mt-6 flex items-center gap-4 md:mt-0">
+            <a
+              href="/signup"
+              className="inline-flex items-center justify-center rounded-full bg-[#F4B942] px-6 py-3 text-[#1E332F]"
+            >
+              Get Started
+            </a>
+            <a
+              href="/about"
+              className="inline-flex items-center justify-center rounded-full border border-[#C6D7CF] px-6 py-3 text-[#28433F]"
+            >
+              Learn More
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="bg-[#2A685F] py-16 text-center">
+        <div className="mx-auto max-w-4xl px-6">
+          <h3 className="text-2xl font-medium text-white/95">Simple, Accessible Pricing</h3>
+          <p className="mt-2 text-white/80">Fair pricing adjusted for your location.</p>
+          <div className="mx-auto mt-8 max-w-md rounded-xl bg-[#2F6C66] p-8 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]">
+            <div className="text-sm text-white/70">Starting from</div>
+            <div className="mt-2 text-4xl text-[#E9B448]">$9</div>
+            <div className="text-white/70">/month</div>
+            <div className="mt-2 text-xs text-white/60">
+              (Ghana) to $29/month (US/UK) with PPP adjustment
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#17262A] py-6 text-center text-white/70">
+        <div className="mx-auto max-w-6xl px-6 text-sm">
           © 2025 OurRoots.Africa. All rights reserved.
-        </footer>
-      </div>
-    </div>
+          <div className="mt-2 text-white/50">Your Guided Journey to Ghanaian Heritage.</div>
+          <div className="mt-3 flex items-center justify-center gap-4">ⓕ ⓧ ⓘ</div>
+        </div>
+      </footer>
+    </main>
   );
 }

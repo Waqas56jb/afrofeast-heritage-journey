@@ -1,111 +1,171 @@
 import Image from "next/image";
+import { MailIcon, LockIcon, PhoneIcon, LocationIcon, ChevronDown } from "@/components/icons";
 
 export default function SignupPage() {
   return (
-    <div className="min-h-[100dvh] bg-gray-100 p-4 md:p-8">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-black/5 md:grid-cols-2">
-        <div className="relative hidden md:block">
-          <Image src="/landing.jpeg" alt="Heritage bridge" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.35),rgba(0,0,0,0.55))]" />
-          <div className="relative flex h-full flex-col justify-between p-8 text-white/90">
-            <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded bg-amber-400 text-teal-900">
-                🌿
-              </div>
-              <span className="font-medium">OurRoots.Africa</span>
-            </div>
-            <div className="pb-10">
-              <h2 className="text-2xl font-semibold">Embank on a Journey of Discovery.</h2>
-              <p className="mt-3 max-w-md text-white/80">
-                Connect with your heritage, explore the vibrant culture of Ghana, and uncover the
-                stories that shape who you are.
-              </p>
-            </div>
+    <main className="min-h-screen grid grid-cols-1 md:grid-cols-2">
+      {/* Left image panel */}
+      <section className="relative hidden md:block">
+        <Image
+          src="/landingpag.png"
+          alt="Canopy walkway in Ghana"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#2F6C66]/60" />
+        <div className="absolute top-8 left-8 flex items-center gap-3 text-white">
+          <div className="h-8 w-8 rounded-sm border border-white/30 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66] text-sm">
+            🌴
           </div>
+          <span className="text-white/95 font-medium">OurRoots.Africa</span>
         </div>
-        <div className="p-6 md:p-10">
-          <h1 className="text-2xl font-semibold text-teal-900">Create Your Heritage Account</h1>
-          <p className="mt-1 text-teal-900/70">Start your personalized journey today.</p>
+        <div className="absolute bottom-12 left-8 right-8 text-white/95">
+          <h2 className="text-2xl font-semibold">Embark on a Journey of Discovery.</h2>
+          <p className="mt-3 max-w-md text-white/85">
+            Connect with your heritage, explore the vibrant culture of Ghana, and uncover the
+            stories that shape who you are.
+          </p>
+        </div>
+      </section>
+
+      {/* Right form panel */}
+      <section className="flex items-center justify-center bg-[#F5F6F8] py-10">
+        <div className="w-full max-w-[520px] px-6 md:px-10">
+          <h1 className="text-[28px] leading-8 font-semibold text-[#2F6C66]">
+            Create Your Heritage Account
+          </h1>
+          <p className="mt-2 text-[13px] text-[#8E98A4]">Start your personalized journey today.</p>
 
           <form className="mt-8 space-y-4">
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-teal-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-teal-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400"
-            />
-            <input
-              type="tel"
-              placeholder="Phone (WhatsApp)"
-              className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-teal-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-400"
-            />
+            {/* Email */}
             <div>
-              <div className="flex items-center justify-between">
-                <select className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-teal-900 focus:outline-none focus:ring-2 focus:ring-amber-400">
+              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+                <span className="px-3 text-[#A2ACB6]">
+                  <MailIcon />
+                </span>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#B6C0C9] text-black caret-black"
+                />
+              </div>
+            </div>
+            {/* Password */}
+            <div>
+              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+                <span className="px-3 text-[#A2ACB6]">
+                  <LockIcon />
+                </span>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#B6C0C9] text-black caret-black"
+                />
+              </div>
+            </div>
+            {/* Phone */}
+            <div>
+              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+                <span className="px-3 text-[#A2ACB6]">
+                  <PhoneIcon />
+                </span>
+                <input
+                  type="tel"
+                  placeholder="Phone (WhatsApp)"
+                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#B6C0C9] text-black caret-black"
+                />
+              </div>
+            </div>
+            {/* Country Select */}
+            <div>
+              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+                <span className="px-3 text-[#A2ACB6]">
+                  <LocationIcon />
+                </span>
+                <select
+                  defaultValue="Ghana"
+                  className="w-full py-2.5 pr-10 bg-transparent outline-none text-black caret-black"
+                >
                   <option>Ghana</option>
                   <option>Nigeria</option>
+                  <option>Kenya</option>
                   <option>United States</option>
                   <option>United Kingdom</option>
                 </select>
+                <span className="px-3 text-[#A2ACB6]">
+                  <ChevronDown />
+                </span>
               </div>
-              <p className="mt-1 text-xs text-gray-500">For PPP pricing adjustment</p>
+              <p className="mt-1 text-[11px] text-[#9AA5B1]">For PPP pricing adjustment</p>
             </div>
 
-            <fieldset className="mt-4 space-y-2">
-              <legend className="mb-1 text-sm text-gray-600">Heritage Connection</legend>
-              {[
-                "Ghanaian diaspora",
-                "African American",
-                "Caribbean heritage",
-                "Cultural enthusiast",
-              ].map((label) => (
-                <label key={label} className="flex items-center gap-3 text-sm text-teal-900">
-                  <input type="radio" name="heritage" className="h-4 w-4" />
-                  <span>{label}</span>
+            {/* Heritage Connection */}
+            <div className="pt-2">
+              <label className="block text-[13px] font-semibold text-[#2F3A4A]">
+                Heritage Connection
+              </label>
+              <div className="mt-2 space-y-2 text-[13px] text-[#4B5563]">
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="heritage" /> Ghanaian diaspora
                 </label>
-              ))}
-              <div className="flex items-center gap-3 text-sm text-teal-900">
-                <input type="radio" name="heritage" className="h-4 w-4" />
-                <input
-                  type="text"
-                  placeholder="Other"
-                  className="flex-1 rounded-lg border border-gray-300 px-3 py-2"
-                />
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="heritage" /> African American
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="heritage" /> Caribbean heritage
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="heritage" /> Cultural enthusiast
+                </label>
+                <div className="flex items-center gap-3">
+                  <label className="flex items-center gap-2">
+                    <input type="radio" name="heritage" /> Other:
+                  </label>
+                  <input
+                    type="text"
+                    className="flex-1 rounded-md border border-[#E3E6EA] bg-white py-2 px-3 text-[13px] outline-none text-black caret-black"
+                  />
+                </div>
               </div>
-            </fieldset>
+            </div>
 
-            <label className="mt-2 flex items-center gap-3 text-sm text-teal-900">
-              <input type="checkbox" className="h-4 w-4" /> I agree to Terms & Cultural Guidelines
-            </label>
-            <label className="-mt-2 flex items-center gap-3 text-sm text-teal-900">
-              <input type="checkbox" className="h-4 w-4" /> I consent to Traditional Knowledge Board
-              content sharing protocols
-            </label>
+            {/* Agreements */}
+            <div className="space-y-2 text-[13px] text-[#4B5563]">
+              <label className="flex items-start gap-2">
+                <input type="checkbox" className="mt-0.5" /> I agree to Terms & Cultural Guidelines
+              </label>
+              <label className="flex items-start gap-2">
+                <input type="checkbox" className="mt-0.5" /> I consent to Traditional Knowledge
+                Board content sharing protocols
+              </label>
+            </div>
 
+            {/* CTA */}
             <a
-              href="/dashboard"
-              className="mt-2 flex w-full items-center justify-center rounded-full bg-amber-400 px-6 py-3 text-teal-900 shadow hover:bg-amber-300"
+              href="/verify"
+              className="mt-2 block w-full rounded-md bg-[#F0AE3F] hover:bg-[#E8A63A] py-3 text-white font-medium shadow-sm text-center"
             >
               Create Account & Start Journey →
             </a>
 
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-              🧡 Your pricing: $9/month (Ghana rate) — Upgrade anytime to premium features
+            {/* Pricing box */}
+            <div className="mt-4 rounded-md border border-[#DDE3E8] bg-white p-4 text-[13px] text-[#4B5563]">
+              <div className="flex items-center gap-2 text-[#2F6C66]">
+                <span>🏷️</span> Your pricing: $9/month (Ghana rate)
+              </div>
+              <div className="mt-1 text-[#8E98A4]">Upgrade anytime to premium features</div>
             </div>
 
-            <p className="text-center text-sm text-gray-600">
+            <p className="mt-4 text-center text-[13px] text-[#7E8893]">
               Already have an account?{" "}
-              <a href="#" className="underline">
+              <a href="/" className="text-[#2F6C66] hover:underline">
                 Log in
               </a>
             </p>
           </form>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

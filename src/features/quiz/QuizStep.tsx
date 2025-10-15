@@ -26,7 +26,7 @@ export default function QuizStep({ question, step, total, options, nextHref }: Q
       step={step}
       total={total}
       options={options}
-      onContinue={(id) => {
+      onContinue={(_id) => {
         if (!nextHref) return;
         router.push(nextHref);
       }}
