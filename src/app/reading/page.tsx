@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
+import PageNavArrows from "@/components/PageNavArrows";
+import Button from "@/components/Button";
 
 export default function ReadingPage() {
   return (
@@ -11,7 +13,10 @@ export default function ReadingPage() {
         {/* Content */}
         <div className="mx-auto w-full max-w-4xl px-6 py-10">
           {/* Header card */}
-          <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#E5E7EB]">
+          <div className="relative rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#E5E7EB]">
+            <div className="absolute right-4 top-4">
+              <PageNavArrows prevHref={undefined} nextHref="/reading/annotate" />
+            </div>
             {/* Title row */}
             <h1 className="text-3xl font-semibold text-[#244848]">
               Understanding Asante Governance Systems
@@ -100,14 +105,13 @@ export default function ReadingPage() {
 
             {/* Footer actions */}
             <div className="mt-8 flex flex-col items-center gap-3 md:flex-row md:justify-center">
-              <button className="w-full rounded-full bg-[#2A685F] px-5 py-2 text-white md:w-56">
+              <Button variant="secondary" className="w-full md:w-56">
                 Discuss with Community
-              </button>
-              <a
-                href="/quiz/start"
-                className="w-full rounded-full bg-[#F4B942] px-5 py-2 text-center text-[#1E332F] md:w-40"
-              >
-                Quiz Yourself
+              </Button>
+              <a href="/quiz/start" className="w-full md:w-40">
+                <Button className="w-full" rightIcon={<span>→</span>}>
+                  Quiz Yourself
+                </Button>
               </a>
             </div>
           </div>

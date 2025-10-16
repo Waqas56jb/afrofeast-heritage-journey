@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@/components/Button";
 import { ArrowLeft, WhatsappIcon } from "@/components/icons";
 
 export default function PremiumSuccessPage() {
@@ -81,9 +82,8 @@ export default function PremiumSuccessPage() {
                         ? "/community"
                         : "/services"
                   }
-                  className="rounded-full bg-[#F4B942] px-4 py-2 text-sm text-[#1E332F]"
                 >
-                  {row.cta} →
+                  <Button rightIcon={<span>→</span>}>{row.cta}</Button>
                 </a>
               </div>
             ))}

@@ -1,4 +1,5 @@
 import Sidebar from "@/components/Sidebar";
+import Button from "@/components/Button";
 
 export default function LibraryProgressPage() {
   return (
@@ -41,7 +42,10 @@ export default function LibraryProgressPage() {
                 </div>
               </div>
 
-              <div className="rounded-xl border border-[#F0B741]/40 bg-[#2E5F5A] p-4 text-[#E9F4F1] ring-1 ring-[#F0B741]/30">
+              <a
+                href="/reading"
+                className="rounded-xl border border-[#F0B741]/40 bg-[#2E5F5A] p-4 text-[#E9F4F1] ring-1 ring-[#F0B741]/30 block hover:bg-[#2B5753] transition-colors"
+              >
                 <div className="text-sm">Stage 2: Cultural Intelligence</div>
                 <div className="mt-1 inline-block rounded-full bg-[#3A3F24] px-2 py-0.5 text-[11px] text-[#F0B741] ring-1 ring-[#F0B741]/40">
                   In Progress
@@ -53,7 +57,7 @@ export default function LibraryProgressPage() {
                   <div>6/8 articles • 1h 45m reading time</div>
                   <div>Current: "Sacred Symbols & Meanings"</div>
                 </div>
-              </div>
+              </a>
 
               <div className="rounded-xl border border-[#3A6B64] bg-[#2E5F5A] p-4 text-[#A0B5B1] opacity-70">
                 <div className="text-sm">Stage 3: Practical Preparation</div>
@@ -89,15 +93,14 @@ export default function LibraryProgressPage() {
                   recommendations for your Ghana trip.
                 </p>
                 <div className="mt-6 flex flex-col items-center gap-3 md:flex-row">
-                  <a
-                    href="/reading"
-                    className="w-full rounded-full bg-[#F0B741] px-5 py-2 text-center text-[#1E332F] md:w-48"
-                  >
-                    Continue Reading →
+                  <a href="/reading" className="w-full md:w-48">
+                    <Button className="w-full" rightIcon={<span>→</span>}>
+                      Continue Reading
+                    </Button>
                   </a>
-                  <button className="w-full rounded-full border border-[#F0B741] px-5 py-2 text-[#F0B741] md:w-48">
+                  <Button variant="secondary" className="w-full md:w-48">
                     Share Progress
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

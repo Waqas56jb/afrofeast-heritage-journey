@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
+import Button from "@/components/Button";
 
 export default function LibraryPage() {
   return (
@@ -122,11 +123,8 @@ export default function LibraryPage() {
                 <div className="mt-3 rounded-md bg-white/10 p-4">
                   <div className="text-[14px]">“Sacred Symbols of Asante”</div>
                   <div className="mt-1 text-[12px] text-white/80">Stage 2 • 12 min read</div>
-                  <a
-                    className="mt-3 inline-block rounded-full bg-[#F4B942] px-4 py-2 text-sm text-[#1E332F]"
-                    href="/reading"
-                  >
-                    Start Reading →
+                  <a href="/reading/chieftaincy">
+                    <Button rightIcon={<span>→</span>}>Start Reading</Button>
                   </a>
                 </div>
               </section>

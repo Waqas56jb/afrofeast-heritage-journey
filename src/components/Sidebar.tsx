@@ -20,11 +20,11 @@ export default function Sidebar() {
   const items = [
     { label: "Dashboard", href: "/dashboard/user", Icon: HomeIcon },
     { label: "Content Library", href: "/library", Icon: BookOpenIcon },
-    { label: "Love Hub", href: "#", Icon: HeartIcon },
+    { label: "Love Hub", href: "/love", Icon: HeartIcon },
     { label: "Whatsapp", href: "#", Icon: CheckSquareIcon },
-    { label: "Bookings", href: "#", Icon: CalendarIcon },
-    { label: "Community", href: "#", Icon: UsersIcon },
-    { label: "Analytics", href: "#", Icon: BarChartIcon },
+    { label: "Bookings", href: "/bookings", Icon: CalendarIcon },
+    { label: "Community", href: "/community", Icon: UsersIcon },
+    { label: "Analytics", href: "/analytics", Icon: BarChartIcon },
   ];
 
   return (
