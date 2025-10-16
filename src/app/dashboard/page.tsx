@@ -5,45 +5,45 @@ export default function DashboardPage() {
   return (
     <main className="min-h-screen bg-[#1F5A55] text-white">
       {/* Top bar */}
-      <header className="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-sm border border-white/30 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66] text-sm">
-            🌴
+      <header className="absolute inset-x-0 top-0 z-10 bg-transparent">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt="OurRoots.Africa"
+              width={32}
+              height={32}
+              className="rounded-sm"
+            />
+            <span className="text-white/95">OurRoots.Africa</span>
           </div>
-          <span className="text-white/95">OurRoots.Africa</span>
+          <nav className="ml-auto flex items-center text-[13px] text-white/90 translate-x-2">
+            <a
+              href="/login"
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-1.5 text-white/90 hover:bg-white/10"
+            >
+              <LogInIcon /> Login
+            </a>
+          </nav>
         </div>
-        <nav className="flex items-center gap-6 text-[13px] text-white/90">
-          <a href="/" className="hover:underline inline-flex items-center gap-2">
-            <HomeIcon /> Home
-          </a>
-          <a href="/about" className="hover:underline inline-flex items-center gap-2">
-            <InfoIcon /> About
-          </a>
-          <a href="/community" className="hover:underline inline-flex items-center gap-2">
-            <UsersIcon /> Community
-          </a>
-          <a
-            href="/login"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-1.5 text-white/90 hover:bg-white/10"
-          >
-            <LogInIcon /> Login
-          </a>
-        </nav>
       </header>
 
       {/* Hero background image overlay */}
       <div className="relative">
         <Image
-          src="/landing.jpeg"
+          src="/background.png"
           alt="Hero"
           width={2400}
           height={1200}
-          className="h-[520px] w-full object-cover opacity-30"
+          priority
+          quality={100}
+          className="h-[520px] w-full object-cover"
         />
+        <div className="absolute inset-0 bg-[#1F5A55]/70" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-3xl px-6 text-center">
-            <div className="mx-auto mb-5 h-16 w-16 rounded bg-black/40 flex items-center justify-center">
-              🗿
+            <div className="mx-auto mb-5 h-16 w-16 rounded bg-black/40 flex items-center justify-center overflow-hidden">
+              <Image src="/logo.png" alt="Logo" width={48} height={48} />
             </div>
             <h1 className="text-4xl font-semibold leading-snug">
               Your Ghana heritage journey, guided.
@@ -96,21 +96,25 @@ export default function DashboardPage() {
             Whatever your connection to Ghana, we have a guided path for you. Which one are you?
           </p>
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {["Heritage Seeker", "Cultural Explorer", "Curious Traveller"].map((title) => (
+            {[
+              { title: "Heritage Seeker", img: "/1.png", href: "/quiz/start-heritage" },
+              { title: "Cultural Explorer", img: "/2.png", href: "/quiz/start" },
+              { title: "Curious Traveller", img: "/3.png", href: "/quiz/start-curious" },
+            ].map(({ title, img, href }) => (
               <div
                 key={title}
                 className="rounded-xl bg-[#2F6C66] p-6 text-left shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
               >
                 <div
                   className="mx-auto -mt-12 mb-4 h-16 w-16 rounded-full border-4 border-[#2F6C66] bg-center bg-cover"
-                  style={{ backgroundImage: "url(/landing.jpeg)" }}
+                  style={{ backgroundImage: `url(${img})` }}
                 />
                 <div className="text-[#E9B448]">{title}</div>
                 <p className="mt-2 text-white/85 text-sm">
                   Immerse yourself in the vibrant culture, art, and traditions of Ghana.
                 </p>
                 <a
-                  href="/quiz"
+                  href={href}
                   className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F0AE3F] px-5 py-2 text-[#1E332F]"
                 >
                   Start Quiz

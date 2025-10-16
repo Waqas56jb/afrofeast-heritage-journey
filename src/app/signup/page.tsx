@@ -1,5 +1,12 @@
 import Image from "next/image";
-import { MailIcon, LockIcon, PhoneIcon, LocationIcon, ChevronDown } from "@/components/icons";
+import {
+  MailIcon,
+  LockIcon,
+  PhoneIcon,
+  LocationIcon,
+  ChevronDown,
+  PalmLogo,
+} from "@/components/icons";
 
 export default function SignupPage() {
   return (
@@ -7,16 +14,19 @@ export default function SignupPage() {
       {/* Left image panel */}
       <section className="relative hidden md:block">
         <Image
-          src="/landingpag.png"
+          src="/landingpage.png"
           alt="Canopy walkway in Ghana"
           fill
           priority
+          quality={100}
+          placeholder="empty"
+          sizes="(min-width: 768px) 50vw, 100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#2F6C66]/60" />
+        <div className="absolute inset-0 bg-black/20" />
         <div className="absolute top-8 left-8 flex items-center gap-3 text-white">
-          <div className="h-8 w-8 rounded-sm border border-white/30 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66] text-sm">
-            🌴
+          <div className="h-8 w-8 rounded-sm border border-white/30 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66]">
+            <PalmLogo size={18} />
           </div>
           <span className="text-white/95 font-medium">OurRoots.Africa</span>
         </div>
@@ -30,7 +40,7 @@ export default function SignupPage() {
       </section>
 
       {/* Right form panel */}
-      <section className="flex items-center justify-center bg-[#F5F6F8] py-10">
+      <section className="flex items-center justify-center bg-[#F7F7F7] py-10">
         <div className="w-full max-w-[520px] px-6 md:px-10">
           <h1 className="text-[28px] leading-8 font-semibold text-[#2F6C66]">
             Create Your Heritage Account
@@ -40,46 +50,46 @@ export default function SignupPage() {
           <form className="mt-8 space-y-4">
             {/* Email */}
             <div>
-              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+              <div className="flex items-center rounded-md border border-[#E5E7EB] bg-white shadow-sm">
                 <span className="px-3 text-[#A2ACB6]">
                   <MailIcon />
                 </span>
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#B6C0C9] text-black caret-black"
+                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
                 />
               </div>
             </div>
             {/* Password */}
             <div>
-              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+              <div className="flex items-center rounded-md border border-[#E5E7EB] bg-white shadow-sm">
                 <span className="px-3 text-[#A2ACB6]">
                   <LockIcon />
                 </span>
                 <input
                   type="password"
                   placeholder="Password"
-                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#B6C0C9] text-black caret-black"
+                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
                 />
               </div>
             </div>
             {/* Phone */}
             <div>
-              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+              <div className="flex items-center rounded-md border border-[#E5E7EB] bg-white shadow-sm">
                 <span className="px-3 text-[#A2ACB6]">
                   <PhoneIcon />
                 </span>
                 <input
                   type="tel"
                   placeholder="Phone (WhatsApp)"
-                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#B6C0C9] text-black caret-black"
+                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
                 />
               </div>
             </div>
             {/* Country Select */}
             <div>
-              <div className="flex items-center rounded-md border border-[#E3E6EA] bg-white shadow-sm">
+              <div className="flex items-center rounded-md border border-[#E5E7EB] bg-white shadow-sm">
                 <span className="px-3 text-[#A2ACB6]">
                   <LocationIcon />
                 </span>
@@ -150,7 +160,7 @@ export default function SignupPage() {
             </a>
 
             {/* Pricing box */}
-            <div className="mt-4 rounded-md border border-[#DDE3E8] bg-white p-4 text-[13px] text-[#4B5563]">
+            <div className="mt-4 rounded-md border border-[#E5E7EB] bg-white p-4 text-[13px] text-[#4B5563]">
               <div className="flex items-center gap-2 text-[#2F6C66]">
                 <span>🏷️</span> Your pricing: $9/month (Ghana rate)
               </div>
