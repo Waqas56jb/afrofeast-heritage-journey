@@ -1,5 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import Button from "@/components/Button";
+import { AiOutlineCalendar, AiOutlinePlayCircle, AiOutlineDownload } from "react-icons/ai";
 
 export default function LoveEventsPage() {
   return (
@@ -59,15 +60,22 @@ export default function LoveEventsPage() {
                         <div className="text-[14px]">{e.title}</div>
                         <div className="mt-1 text-[12px] text-white/80">{e.desc}</div>
                         <div className="mt-3 flex flex-wrap gap-3">
-                          {e.ctas.map((c, i) => (
-                            <Button
-                              key={c}
-                              variant={i === 1 ? "secondary" : "primary"}
-                              className="px-3 py-1 text-[12px]"
-                            >
-                              {c}
-                            </Button>
-                          ))}
+                          {e.ctas.map((c, i) => {
+                            const isCalendar = c.toLowerCase().includes("calendar");
+                            const isPremium = c.toLowerCase().includes("premium");
+                            return (
+                              <Button
+                                key={c}
+                                variant={i === 1 ? "secondary" : "primary"}
+                                className={`inline-flex items-center gap-2 px-3 py-1 text-[12px] ${
+                                  isPremium ? "bg-white/10 text-white" : ""
+                                } ${isCalendar ? "text-white" : ""}`}
+                              >
+                                {isCalendar ? <AiOutlineCalendar size={14} /> : null}
+                                {c}
+                              </Button>
+                            );
+                          })}
                         </div>
                       </div>
                       <div className="text-right text-[11px] text-white/70">{e.foot}</div>
@@ -84,9 +92,14 @@ export default function LoveEventsPage() {
                   <div className="text-[14px]">“Building Trust Across Cultures”</div>
                   <div className="mt-1 text-[12px] text-white/80">Nov 28, 2025 • 47 attendees</div>
                   <div className="mt-3 flex flex-wrap gap-3">
-                    <Button className="px-3 py-1 text-[12px]">Watch Recording</Button>
-                    <Button variant="secondary" className="px-3 py-1 text-[12px]">
-                      Download Notes
+                    <Button className="inline-flex items-center gap-2 px-3 py-1 text-[12px]">
+                      <AiOutlinePlayCircle size={14} /> Watch Recording
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      className="inline-flex items-center gap-2 px-3 py-1 text-[12px]"
+                    >
+                      <AiOutlineDownload size={14} /> Download Notes
                     </Button>
                     <div className="rounded-full bg-white/10 px-3 py-1 text-[12px]">
                       1h 23m recording

@@ -10,7 +10,7 @@ export default function AnnotatedReadingPage() {
         <Sidebar />
 
         {/* Main content area with right panel */}
-        <div className="mx-auto flex w-full max-w-6xl gap-6 px-6 py-6">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-6 lg:flex-row">
           {/* Article column */}
           <div className="w-full">
             {/* Top bar: back only */}
@@ -54,7 +54,7 @@ export default function AnnotatedReadingPage() {
           </div>
 
           {/* Right annotation toolkit panel */}
-          <aside className="sticky top-6 hidden w-[360px] shrink-0 self-start rounded-2xl border border-[#2D5A5A]/30 bg-[#2D5A5A] p-5 text-white shadow-sm lg:block">
+          <aside className="sticky top-6 w-full shrink-0 self-start rounded-2xl border border-[#2D5A5A]/30 bg-[#2D5A5A] p-5 text-white shadow-sm lg:w-[360px]">
             <div className="flex items-center gap-2 text-[#F6C56D]">
               <span>✎</span>
               <div className="font-medium">Annotation Toolkit</div>

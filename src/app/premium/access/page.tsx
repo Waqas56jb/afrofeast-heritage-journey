@@ -74,15 +74,14 @@ export default function PremiumAccessPage() {
           {/* Payment method tabs */}
           <div className="mt-5">
             <div className="text-[13px] text-white/85">Payment Method</div>
-            <div className="mt-2 grid grid-cols-3 gap-3">
-              <button className="rounded-md border-2 border-[#F4B942] bg-[#244C47] px-4 py-3 text-left text-sm font-medium text-white">
-                Credit/Debit
-                <br /> Card
+            <div className="mt-2 grid grid-cols-2 gap-3 md:grid-cols-3">
+              <button className="flex min-h-12 items-center justify-center rounded-md border-2 border-[#F4B942] bg-[#244C47] px-3 py-3 text-center text-sm font-medium text-white leading-tight whitespace-normal break-words">
+                Credit/Debit Card
               </button>
-              <button className="rounded-md border border-white/20 bg-[#244C47] px-4 py-3 text-sm text-white/85">
+              <button className="flex min-h-12 items-center justify-center rounded-md border border-white/20 bg-[#244C47] px-3 py-3 text-center text-sm text-white/85 leading-tight whitespace-normal break-words">
                 Mobile Money
               </button>
-              <button className="rounded-md border border-white/20 bg-[#244C47] px-4 py-3 text-sm text-white/85">
+              <button className="flex min-h-12 items-center justify-center rounded-md border border-white/20 bg-[#244C47] px-3 py-3 text-center text-sm text-white/85 leading-tight whitespace-normal break-words">
                 PayPal
               </button>
             </div>

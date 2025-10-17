@@ -18,10 +18,11 @@ export default function LibraryPage() {
               </p>
             </div>
             <a
-              className="rounded-full bg-[#F4B942] px-4 py-2 text-[#1E332F]"
+              className="inline-flex items-center gap-2 rounded-full bg-[#F4B942] px-3 py-1.5 text-[#1E332F] text-sm md:text-base active:scale-95"
               href="/library/offline"
             >
-              Manage Content →
+              <span>Manage Content</span>
+              <span aria-hidden>→</span>
             </a>
           </header>
 
