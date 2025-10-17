@@ -11,7 +11,7 @@ import {
 export type NavItem = {
   label: string;
   href: string;
-  Icon: (props: { size?: number }) => JSX.Element;
+  Icon: (props: { size?: number }) => React.ReactNode;
 };
 
 export const navItems: NavItem[] = [
