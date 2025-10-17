@@ -3,29 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import {
-  HomeIcon,
-  BookOpenIcon,
-  HeartIcon,
-  CheckSquareIcon,
-  CalendarIcon,
-  UsersIcon,
-  BarChartIcon,
-  LogOutIcon,
-} from "@/components/icons";
+import { LogOutIcon } from "@/components/icons";
+import { navItems } from "@/components/navItems";
 
 export default function Sidebar() {
   const pathname = usePathname();
 
-  const items = [
-    { label: "Dashboard", href: "/dashboard/user", Icon: HomeIcon },
-    { label: "Content Library", href: "/library", Icon: BookOpenIcon },
-    { label: "Love Hub", href: "/love", Icon: HeartIcon },
-    { label: "Whatsapp", href: "#", Icon: CheckSquareIcon },
-    { label: "Bookings", href: "/bookings", Icon: CalendarIcon },
-    { label: "Community", href: "/community", Icon: UsersIcon },
-    { label: "Analytics", href: "/analytics", Icon: BarChartIcon },
-  ];
+  const items = navItems;
 
   return (
     <aside className="hidden w-64 shrink-0 border-r border-[#E5E7EB]/20 bg-[#2D5A5A] lg:block">
