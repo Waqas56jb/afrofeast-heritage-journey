@@ -106,6 +106,11 @@ export default function MobileDrawer() {
                 );
               })}
             </nav>
+            <div className="mt-4 px-2 pb-6">
+              <button className="flex w-full items-center justify-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 text-white active:scale-95">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       )}
