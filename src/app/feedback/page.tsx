@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "@/components/icons";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export default function FeedbackPage() {
   return (
@@ -11,7 +11,7 @@ export default function FeedbackPage() {
           href="/dashboard/user"
           className="inline-flex items-center gap-2 text-white/90 hover:text-white"
         >
-          <ArrowLeft /> <span className="text-sm">Back</span>
+          <AiOutlineArrowLeft size={16} /> <span className="text-sm">Back</span>
         </Link>
         <div className="ml-4 inline-flex items-center gap-3">
           <Image
@@ -38,17 +38,24 @@ export default function FeedbackPage() {
           <div className="mt-6 text-sm text-white/80">
             How likely are you to recommend OurRoots.Africa to a friend?
           </div>
-          <div className="mt-2 flex items-center gap-2 text-[13px] text-white/70">
-            <span>Not Likely</span>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-              <button
-                key={n}
-                className={`h-8 w-8 rounded-full border ${n === 8 ? "bg-[#F4B942] text-[#1E332F] border-transparent" : "border-white/30 text-white"}`}
-              >
-                {n}
-              </button>
-            ))}
-            <span className="ml-2">Very Likely</span>
+          <div className="mt-2 flex flex-wrap items-center gap-3 text-[13px] text-white/70">
+            <span className="shrink-0">Not Likely</span>
+            <div className="flex flex-wrap gap-2">
+              {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                <button
+                  key={n}
+                  aria-label={`Score ${n}`}
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-full border text-[13px] leading-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 ${
+                    n === 8
+                      ? "bg-[#F4B942] text-[#1E332F] border-transparent"
+                      : "border-white/30 text-white hover:bg-white/10"
+                  }`}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+            <span className="ml-1 shrink-0">Very Likely</span>
           </div>
 
           {/* Reason */}

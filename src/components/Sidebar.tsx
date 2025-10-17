@@ -12,7 +12,7 @@ export default function Sidebar() {
   const items = navItems;
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r border-[#E5E7EB]/20 bg-[#2D5A5A] lg:block">
+    <aside className="hidden w-64 shrink-0 border-r border-[#E5E7EB]/20 bg-[#2D5A5A] lg:block lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden">
       <div className="px-6 py-6">
         <div className="flex items-center gap-3">
           <Image
@@ -43,7 +43,7 @@ export default function Sidebar() {
           );
         })}
       </nav>
-      <div className="mt-auto px-6 pb-8 pt-24 text-[#F7F7F7]">
+      <div className="mt-auto px-6 pb-8 pt-24 text-[#F7F7F7] max-lg:hidden">
         <a
           className="flex items-center gap-2 text-[17px] text-white/80 hover:text-white active:scale-[0.98]"
           href="#"

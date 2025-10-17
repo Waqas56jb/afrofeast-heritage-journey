@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/Button";
-import { ArrowLeft, WhatsappIcon } from "@/components/icons";
+import { WhatsappIcon } from "@/components/icons";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export default function PremiumSuccessPage() {
   return (
@@ -12,7 +13,7 @@ export default function PremiumSuccessPage() {
           href="/dashboard/user"
           className="inline-flex items-center gap-2 text-white/90 hover:text-white"
         >
-          <ArrowLeft /> <span className="text-sm">Back</span>
+          <AiOutlineArrowLeft size={16} /> <span className="text-sm">Back</span>
         </Link>
         <div className="ml-4 inline-flex items-center gap-3">
           <Image

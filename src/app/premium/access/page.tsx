@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "@/components/icons";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export default function PremiumAccessPage() {
   return (
@@ -21,7 +21,7 @@ export default function PremiumAccessPage() {
           href="/quiz/results"
           className="inline-flex items-center gap-2 text-white/90 hover:text-white"
         >
-          <ArrowLeft /> <span className="text-sm">Back</span>
+          <AiOutlineArrowLeft size={16} /> <span className="text-sm">Back</span>
         </Link>
         <div className="ml-4 inline-flex items-center gap-3">
           <Image
