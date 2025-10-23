@@ -4,7 +4,7 @@ import {
   LockIcon,
   PhoneIcon,
   LocationIcon,
-  ChevronDown,
+  ChevronDownIcon,
   PalmLogo,
 } from "@/components/icons";
 
@@ -104,7 +104,7 @@ export default function SignupPage() {
                   <option>United Kingdom</option>
                 </select>
                 <span className="px-3 text-[#A2ACB6]">
-                  <ChevronDown />
+                  <ChevronDownIcon />
                 </span>
               </div>
               <p className="mt-1 text-[11px] text-[#9AA5B1]">For PPP pricing adjustment</p>

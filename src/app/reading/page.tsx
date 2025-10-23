@@ -1,7 +1,8 @@
+"use client";
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
 import PageNavArrows from "@/components/PageNavArrows";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 
 export default function ReadingPage() {
   return (

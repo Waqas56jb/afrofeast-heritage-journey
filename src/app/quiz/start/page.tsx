@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, WhatsappIcon } from "@/components/icons";
+import { ArrowLeftIcon, WhatsappIcon } from "@/components/icons";
 
 export default function QuizStartPage() {
   return (
@@ -18,7 +18,7 @@ export default function QuizStartPage() {
       {/* Top bar */}
       <header className="relative z-10 mx-auto flex max-w-6xl items-center gap-3 px-6 py-4">
         <Link href="/" className="inline-flex items-center gap-2 text-white/90 hover:text-white">
-          <ArrowLeft /> <span className="text-sm">Back</span>
+          <ArrowLeftIcon /> <span className="text-sm">Back</span>
         </Link>
         <div className="ml-4 inline-flex items-center gap-3">
           <Image
