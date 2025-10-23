@@ -1,26 +1,66 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/Card";
 import {
   MailIcon,
   LockIcon,
-  EyeIcon,
   GoogleIcon,
   FacebookIcon,
   PalmLogo,
+  SparklesIcon,
+  ShieldIcon,
+  UsersIcon,
+  CompassIcon,
 } from "@/components/icons";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      window.location.href = "/dashboard/user";
+    }, 2000);
+  };
+
   return (
     <main className="min-h-screen grid grid-cols-1 md:grid-cols-2">
-      <section className="relative hidden md:flex items-center justify-center text-white overflow-hidden">
+      {/* Left Panel - Hero Section */}
+      <motion.section
+        className="relative hidden md:flex items-center justify-center text-white overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <img
           src="/landingpage.png"
           alt="Heritage"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[#2D5A5A]/60" />
-        <div className="z-10 max-w-md text-center px-8">
-          <div className="mx-auto mb-7 h-12 w-12 rounded-sm border border-white/20 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66]">
+        <motion.div
+          className="z-10 max-w-md text-center px-8"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.div
+            className="mx-auto mb-7 h-12 w-12 rounded-lg border border-white/20 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66] shadow-lg"
+            whileHover={{ scale: 1.05, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             <PalmLogo size={20} />
-          </div>
+          </motion.div>
           <h1 className="text-3xl font-semibold tracking-wide">OurRoots.Africa</h1>
           <h2 className="mt-6 text-lg font-semibold">Welcome Back</h2>
           <p className="mt-4 text-white/85">
@@ -28,110 +68,181 @@ export default function LoginPage() {
             connections.
           </p>
           <div className="mt-10 flex items-center justify-center gap-6 text-sm text-white/80">
-            <span>Cultural Heritage</span>
+            <motion.span className="flex items-center gap-1" whileHover={{ scale: 1.05 }}>
+              <ShieldIcon size={14} />
+              Cultural Heritage
+            </motion.span>
             <span className="opacity-60">•</span>
-            <span>Guided Journeys</span>
+            <motion.span className="flex items-center gap-1" whileHover={{ scale: 1.05 }}>
+              <CompassIcon size={14} />
+              Guided Journeys
+            </motion.span>
             <span className="opacity-60">•</span>
-            <span>Expert Support</span>
+            <motion.span className="flex items-center gap-1" whileHover={{ scale: 1.05 }}>
+              <UsersIcon size={14} />
+              Expert Support
+            </motion.span>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section className="flex items-center justify-center bg-[#F5F6F8]">
+      {/* Right Panel - Login Form */}
+      <motion.section
+        className="flex items-center justify-center bg-[#F5F6F8]"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+      >
         <div className="w-full max-w-[420px] px-6 md:px-8">
-          <h2 className="text-center text-[#2F6C66] text-2xl font-semibold">Sign In</h2>
-          <p className="mt-2 text-center text-[13px] text-[#8E98A4]">
-            Welcome back to your heritage journey
-          </p>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <Card variant="elevated" className="border-0 shadow-xl">
+              <CardHeader className="text-center pb-4">
+                <CardTitle className="text-[#2F6C66] text-2xl font-semibold flex items-center justify-center gap-2">
+                  <SparklesIcon size={24} className="text-[#F4B942]" />
+                  Sign In
+                </CardTitle>
+                <CardDescription className="text-[#8E98A4]">
+                  Welcome back to your heritage journey
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 }}
+                  >
+                    <label className="block text-sm font-semibold text-[#7E8893] mb-2">
+                      Email Address
+                    </label>
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      leftIcon={<MailIcon size={16} />}
+                      required
+                    />
+                  </motion.div>
 
-          <form className="mt-8 space-y-5">
-            <div>
-              <label className="block text-[11px] font-semibold text-[#7E8893]">
-                Email Address
-              </label>
-              <div className="mt-2 flex items-center rounded-md border border-[#E5E7EB] bg-white shadow-sm focus-within:border-[#D5DAE0]">
-                <span className="px-3 text-[#A2ACB6]">
-                  <MailIcon />
-                </span>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
-                />
-              </div>
-            </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.7 }}
+                  >
+                    <label className="block text-sm font-semibold text-[#7E8893] mb-2">
+                      Password
+                    </label>
+                    <Input
+                      type="password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      leftIcon={<LockIcon size={16} />}
+                      required
+                    />
+                  </motion.div>
 
-            <div>
-              <label className="block text-[11px] font-semibold text-[#7E8893]">Password</label>
-              <div className="mt-2 flex items-center rounded-md border border-[#E5E7EB] bg-white shadow-sm focus-within:border-[#D5DAE0]">
-                <span className="px-3 text-[#A2ACB6]">
-                  <LockIcon />
-                </span>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
-                />
-                <span className="px-3 text-[#A2ACB6]">
-                  <EyeIcon />
-                </span>
-              </div>
-            </div>
+                  <motion.div
+                    className="flex items-center justify-between text-sm"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.8 }}
+                  >
+                    <label className="inline-flex items-center gap-2 text-[#7E8893] cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-[#D5DAE0] text-[#F4B942] focus:ring-[#F4B942]"
+                        checked={rememberMe}
+                        onChange={(e) => setRememberMe(e.target.checked)}
+                      />
+                      Remember me
+                    </label>
+                    <a href="#" className="text-[#F0AE3F] hover:text-[#E8A63A] transition-colors">
+                      Forgot password?
+                    </a>
+                  </motion.div>
 
-            <div className="flex items-center justify-between text-[13px]">
-              <label className="inline-flex items-center gap-2 text-[#7E8893]">
-                <input type="checkbox" className="h-4 w-4 rounded border-[#D5DAE0]" />
-                Remember me
-              </label>
-              <a href="#" className="text-[#F0AE3F]">
-                Forgot password?
-              </a>
-            </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.9 }}
+                  >
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      size="lg"
+                      loading={isLoading}
+                      variant="premium"
+                    >
+                      Sign In
+                    </Button>
+                  </motion.div>
 
-            <a
-              href="/dashboard/user"
-              className="block w-full rounded-md bg-[#F0AE3F] hover:bg-[#E8A63A] py-2.5 text-center text-white font-medium shadow-sm"
-            >
-              Sign In
-            </a>
+                  <motion.div
+                    className="relative my-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 1.0 }}
+                  >
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-[#E5E7EB]" />
+                    </div>
+                    <div className="relative flex justify-center">
+                      <span className="bg-[#F5F6F8] px-4 text-sm text-[#9AA5B1]">
+                        Or continue with
+                      </span>
+                    </div>
+                  </motion.div>
 
-            <div className="relative my-6">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#E5E7EB]" />
-              </div>
-              <div className="relative flex justify-center">
-                <span className="bg-[#F5F6F8] px-4 text-[11px] text-[#9AA5B1]">
-                  Or continue with
-                </span>
-              </div>
-            </div>
+                  <motion.div
+                    className="grid grid-cols-2 gap-3"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 1.1 }}
+                  >
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <GoogleIcon size={18} />
+                      Google
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <FacebookIcon size={18} />
+                      Facebook
+                    </Button>
+                  </motion.div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                className="flex items-center justify-center gap-2 rounded-md border border-[#E5E7EB] bg-white py-2.5 text-sm text-[#111827]"
-              >
-                <GoogleIcon size={18} />
-                Google
-              </button>
-              <button
-                type="button"
-                className="flex items-center justify-center gap-2 rounded-md border border-[#E5E7EB] bg-white py-2.5 text-sm text-[#111827]"
-              >
-                <FacebookIcon size={18} />
-                Facebook
-              </button>
-            </div>
-
-            <p className="text-center text-[13px] text-[#7E8893]">
-              Don't have an account?{" "}
-              <a href="/signup" className="text-[#F0AE3F]">
-                Sign up
-              </a>
-            </p>
-          </form>
+                  <motion.p
+                    className="text-center text-sm text-[#7E8893]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 1.2 }}
+                  >
+                    Don't have an account?{" "}
+                    <a
+                      href="/signup"
+                      className="text-[#F0AE3F] hover:text-[#E8A63A] transition-colors font-medium"
+                    >
+                      Sign up
+                    </a>
+                  </motion.p>
+                </form>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }

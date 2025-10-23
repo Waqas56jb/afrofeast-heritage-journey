@@ -1,5 +1,6 @@
+"use client";
 import Sidebar from "@/components/Sidebar";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 import { AiOutlineCalendar, AiOutlinePlayCircle, AiOutlineDownload } from "react-icons/ai";
 
 export default function LoveEventsPage() {
@@ -66,7 +67,7 @@ export default function LoveEventsPage() {
                             return (
                               <Button
                                 key={c}
-                                variant={i === 1 ? "secondary" : "primary"}
+                                variant={i === 1 ? "secondary" : "default"}
                                 className={`inline-flex items-center gap-2 px-3 py-1 text-[12px] ${
                                   isPremium ? "bg-white/10 text-white" : ""
                                 } ${isCalendar ? "text-white" : ""}`}

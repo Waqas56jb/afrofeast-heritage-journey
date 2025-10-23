@@ -1,4 +1,4 @@
-import { ArrowLeft, ClockIcon } from "@/components/icons";
+import { ArrowLeftIcon, ClockIcon } from "@/components/icons";
 
 export default function VerifyEmailPage() {
   return (
@@ -6,7 +6,7 @@ export default function VerifyEmailPage() {
       {/* Top-left logo */}
       <div className="absolute top-6 left-6 flex items-center gap-3 text-white">
         <a href="/dashboard" className="flex items-center gap-3">
-          <ArrowLeft className="-ml-1 mr-1 text-white/90" />
+          <ArrowLeftIcon className="-ml-1 mr-1 text-white/90" />
           <div className="h-8 w-8 rounded-sm border border-white/30 bg-[#FFF3C4] flex items-center justify-center text-[#2F6C66] text-sm">
             🌴
           </div>

@@ -1,7 +1,7 @@
+"use client";
 import Image from "next/image";
 import Sidebar from "@/components/Sidebar";
-import Button from "@/components/Button";
-
+import { Button } from "@/components/Button";
 export default function LibraryPage() {
   return (
     <main className="min-h-screen bg-[#F7F7F7] text-[#244848]">

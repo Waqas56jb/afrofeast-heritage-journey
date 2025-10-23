@@ -1,5 +1,6 @@
+"use client";
 import Sidebar from "@/components/Sidebar";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 
 export default function CulturalGuidesPage() {
   return (
