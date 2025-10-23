@@ -15,7 +15,7 @@ export function ProtectedRoute({ children, redirectTo = '/login' }: ProtectedRou
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push(redirectTo);
+      router.push(redirectTo as any);
     }
   }, [user, loading, router, redirectTo]);
 

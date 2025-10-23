@@ -50,6 +50,7 @@ export interface CardProps
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, variant, size, hover, animation = true, delay = 0, ...props }, ref) => {
     if (animation) {
+      const { onDrag, onDragEnd, onDragStart, ...motionProps } = props as any;
       return (
         <motion.div
           className={cn(cardVariants({ variant, size, hover, className }))}
@@ -58,7 +59,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay }}
           whileHover={hover === "lift" ? { y: -4, transition: { duration: 0.2 } } : {}}
-          {...props}
+          {...motionProps}
         />
       );
     }
