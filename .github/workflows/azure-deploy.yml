@@ -2,61 +2,35 @@ name: Deploy to Azure App Service
 
 on:
   push:
-    branches: [ main, develop ]
-  pull_request:
     branches: [ main ]
-
-env:
-  AZURE_WEBAPP_NAME: afrofeast-heritage-journey
-  AZURE_WEBAPP_PACKAGE_PATH: '.'
-  NODE_VERSION: '18.x'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment: 'production'
     
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v4
-
-    - name: Setup Node.js ${{ env.NODE_VERSION }} Environment
+      
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: '22'
         cache: 'npm'
-
-    - name: 'Resolve Project Dependencies Using Npm'
-      shell: bash
-      run: |
-        pushd '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-        npm ci
-        popd
-
-    - name: 'Build Next.js Application'
-      shell: bash
-      run: |
-        pushd '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-        npm run build
-        popd
-
-    - name: 'Run Linting'
-      shell: bash
-      run: |
-        pushd '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-        npm run lint
-        popd
-
-    - name: 'Deploy to Azure Web App'
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v3
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build Next.js app
+      run: npm run build
+      env:
+        NODE_ENV: production
+        
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        slot-name: 'Production'
+        app-name: 'afrofeast-heritage-journey'
+        slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
-    - name: 'Post-deployment Health Check'
-      run: |
-        echo "Deployment completed successfully!"
-        echo "App URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
+        package: .
