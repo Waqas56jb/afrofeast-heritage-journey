@@ -80,6 +80,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     if (animation) {
+      const { onDrag, onDragEnd, onDragStart, ...motionProps } = props as any;
       return (
         <motion.button
           className={cn(buttonVariants({ variant, size, className }))}
@@ -88,7 +89,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          {...props}
+          {...motionProps}
         >
           {buttonContent}
         </motion.button>
