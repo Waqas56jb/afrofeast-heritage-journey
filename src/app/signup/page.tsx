@@ -1,4 +1,8 @@
+'use client';
+
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   MailIcon,
   LockIcon,
@@ -9,6 +13,63 @@ import {
 } from "@/components/icons";
 
 export default function SignupPage() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    phone: '',
+    country: 'Ghana',
+    heritage_connection: '',
+    other_heritage: '',
+    terms_accepted: false,
+    content_sharing_consent: false,
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    }));
+  };
+
+  const handleRadioChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      heritage_connection: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Success - redirect to login or dashboard
+        router.push('/login?message=Account created successfully! Please log in.');
+      } else {
+        setError(data.error || 'Failed to create account');
+      }
+    } catch (error) {
+      setError('Network error. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <main className="min-h-screen grid grid-cols-1 md:grid-cols-2">
       {/* Left image panel */}
@@ -47,7 +108,14 @@ export default function SignupPage() {
           </h1>
           <p className="mt-2 text-[13px] text-[#8E98A4]">Start your personalized journey today.</p>
 
-          <form className="mt-8 space-y-4">
+          <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+            {/* Error Message */}
+            {error && (
+              <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">
+                {error}
+              </div>
+            )}
+
             {/* Email */}
             <div>
               <div className="flex items-center rounded-md border border-[#E5E7EB] bg-white shadow-sm">
@@ -56,7 +124,11 @@ export default function SignupPage() {
                 </span>
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
                   className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
                 />
               </div>
@@ -69,7 +141,12 @@ export default function SignupPage() {
                 </span>
                 <input
                   type="password"
+                  name="password"
                   placeholder="Password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                  minLength={6}
                   className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
                 />
               </div>
@@ -82,7 +159,10 @@ export default function SignupPage() {
                 </span>
                 <input
                   type="tel"
+                  name="phone"
                   placeholder="Phone (WhatsApp)"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   className="w-full py-2.5 pr-3 outline-none placeholder:text-[#9CA3AF] text-black caret-black"
                 />
               </div>
@@ -94,14 +174,16 @@ export default function SignupPage() {
                   <LocationIcon />
                 </span>
                 <select
-                  defaultValue="Ghana"
+                  name="country"
+                  value={formData.country}
+                  onChange={handleInputChange}
                   className="w-full py-2.5 pr-10 bg-transparent outline-none text-black caret-black"
                 >
-                  <option>Ghana</option>
-                  <option>Nigeria</option>
-                  <option>Kenya</option>
-                  <option>United States</option>
-                  <option>United Kingdom</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="United States">United States</option>
+                  <option value="United Kingdom">United Kingdom</option>
                 </select>
                 <span className="px-3 text-[#A2ACB6]">
                   <ChevronDownIcon />
@@ -117,23 +199,57 @@ export default function SignupPage() {
               </label>
               <div className="mt-2 space-y-2 text-[13px] text-[#4B5563]">
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="heritage" /> Ghanaian diaspora
+                  <input 
+                    type="radio" 
+                    name="heritage" 
+                    checked={formData.heritage_connection === 'Ghanaian diaspora'}
+                    onChange={() => handleRadioChange('Ghanaian diaspora')}
+                  /> 
+                  Ghanaian diaspora
                 </label>
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="heritage" /> African American
+                  <input 
+                    type="radio" 
+                    name="heritage" 
+                    checked={formData.heritage_connection === 'African American'}
+                    onChange={() => handleRadioChange('African American')}
+                  /> 
+                  African American
                 </label>
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="heritage" /> Caribbean heritage
+                  <input 
+                    type="radio" 
+                    name="heritage" 
+                    checked={formData.heritage_connection === 'Caribbean heritage'}
+                    onChange={() => handleRadioChange('Caribbean heritage')}
+                  /> 
+                  Caribbean heritage
                 </label>
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="heritage" /> Cultural enthusiast
+                  <input 
+                    type="radio" 
+                    name="heritage" 
+                    checked={formData.heritage_connection === 'Cultural enthusiast'}
+                    onChange={() => handleRadioChange('Cultural enthusiast')}
+                  /> 
+                  Cultural enthusiast
                 </label>
                 <div className="flex items-center gap-3">
                   <label className="flex items-center gap-2">
-                    <input type="radio" name="heritage" /> Other:
+                    <input 
+                      type="radio" 
+                      name="heritage" 
+                      checked={formData.heritage_connection === 'Other'}
+                      onChange={() => handleRadioChange('Other')}
+                    /> 
+                    Other:
                   </label>
                   <input
                     type="text"
+                    name="other_heritage"
+                    value={formData.other_heritage}
+                    onChange={handleInputChange}
+                    placeholder="Specify..."
                     className="flex-1 rounded-md border border-[#E3E6EA] bg-white py-2 px-3 text-[13px] outline-none text-black caret-black"
                   />
                 </div>
@@ -143,21 +259,37 @@ export default function SignupPage() {
             {/* Agreements */}
             <div className="space-y-2 text-[13px] text-[#4B5563]">
               <label className="flex items-start gap-2">
-                <input type="checkbox" className="mt-0.5" /> I agree to Terms & Cultural Guidelines
+                <input 
+                  type="checkbox" 
+                  name="terms_accepted"
+                  checked={formData.terms_accepted}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-0.5" 
+                /> 
+                I agree to Terms & Cultural Guidelines
               </label>
               <label className="flex items-start gap-2">
-                <input type="checkbox" className="mt-0.5" /> I consent to Traditional Knowledge
+                <input 
+                  type="checkbox" 
+                  name="content_sharing_consent"
+                  checked={formData.content_sharing_consent}
+                  onChange={handleInputChange}
+                  className="mt-0.5" 
+                /> 
+                I consent to Traditional Knowledge
                 Board content sharing protocols
               </label>
             </div>
 
             {/* CTA */}
-            <a
-              href="/verify"
-              className="mt-2 block w-full rounded-md bg-[#F0AE3F] hover:bg-[#E8A63A] py-3 text-white font-medium shadow-sm text-center"
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="mt-2 w-full rounded-md bg-[#F0AE3F] hover:bg-[#E8A63A] disabled:bg-gray-400 py-3 text-white font-medium shadow-sm text-center"
             >
-              Create Account & Start Journey →
-            </a>
+              {isLoading ? 'Creating Account...' : 'Create Account & Start Journey →'}
+            </button>
 
             {/* Pricing box */}
             <div className="mt-4 rounded-md border border-[#E5E7EB] bg-white p-4 text-[13px] text-[#4B5563]">
@@ -169,7 +301,7 @@ export default function SignupPage() {
 
             <p className="mt-4 text-center text-[13px] text-[#7E8893]">
               Already have an account?{" "}
-              <a href="/" className="text-[#2F6C66] hover:underline">
+              <a href="/login" className="text-[#2F6C66] hover:underline">
                 Log in
               </a>
             </p>
