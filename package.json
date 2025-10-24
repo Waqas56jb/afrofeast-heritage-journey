@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22.x"
+    "node": "22.x",
+    "npm": "10.x"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 8080",
-    "postinstall": "npm run build",
+    "start": "node server.js",
     "init-db": "node scripts/run-db-init.js",
     "test-db": "node scripts/test-mysql-connection.js",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@azure/storage-blob": "^12.29.1",
