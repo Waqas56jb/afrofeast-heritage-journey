@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 8080",
+    "start": "next start",
+    "postinstall": "npm run build",
     "init-db": "node scripts/run-db-init.js",
     "test-db": "node scripts/test-mysql-connection.js",
     "lint": "eslint .",
