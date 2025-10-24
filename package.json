@@ -11,6 +11,7 @@
     "start": "next start -p 8080",
     "postinstall": "npm run build",
     "init-db": "node scripts/run-db-init.js",
+    "test-db": "node scripts/test-mysql-connection.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "prepare": "husky"

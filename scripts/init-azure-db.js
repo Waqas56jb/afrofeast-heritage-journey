@@ -1,6 +1,11 @@
 const mysql = require('mysql2/promise');
 
 async function initializeDatabase() {
+  console.log('🔗 Connecting to Azure MySQL database...');
+  console.log('Host:', process.env.DB_HOST);
+  console.log('Database:', process.env.DB_NAME);
+  console.log('User:', process.env.DB_USER);
+  
   const connection = await mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -13,9 +18,14 @@ async function initializeDatabase() {
   });
 
   try {
-    console.log('Connected to Azure MySQL database');
+    console.log('✅ Connected to Azure MySQL database');
+    
+    // Test connection
+    const [testResult] = await connection.execute('SELECT 1 as test');
+    console.log('✅ Database connection test successful');
     
     // Create users table
+    console.log('📝 Creating users table...');
     await connection.execute(`
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,12 +36,13 @@ async function initializeDatabase() {
         heritage_connection VARCHAR(100),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-      )
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     `);
     
-    console.log('Users table created successfully');
+    console.log('✅ Users table created successfully');
     
     // Create sessions table for JWT management
+    console.log('📝 Creating sessions table...');
     await connection.execute(`
       CREATE TABLE IF NOT EXISTS sessions (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,18 +51,23 @@ async function initializeDatabase() {
         expires_at TIMESTAMP NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-      )
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     `);
     
-    console.log('Sessions table created successfully');
+    console.log('✅ Sessions table created successfully');
     
-    console.log('Database initialization completed successfully!');
+    // Check if tables exist
+    const [tables] = await connection.execute('SHOW TABLES');
+    console.log('📋 Available tables:', tables.map(t => Object.values(t)[0]));
+    
+    console.log('🎉 Database initialization completed successfully!');
     
   } catch (error) {
-    console.error('Error initializing database:', error);
+    console.error('❌ Error initializing database:', error);
     throw error;
   } finally {
     await connection.end();
+    console.log('🔌 Database connection closed');
   }
 }
 
