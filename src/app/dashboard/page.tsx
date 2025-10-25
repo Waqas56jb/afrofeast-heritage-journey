@@ -17,7 +17,13 @@ export default function DashboardPage() {
             />
             <span className="text-white/95">OurRoots.Africa</span>
           </div>
-          <nav className="ml-auto flex items-center text-[13px] text-white/90 translate-x-2">
+          <nav className="ml-auto flex items-center gap-3 text-[13px] text-white/90 translate-x-2">
+            <a
+              href="/signup"
+              className="inline-flex items-center gap-2 rounded-full bg-[#F4B942] px-4 py-1.5 text-[#1E332F] font-medium hover:bg-[#E8A63A] transition-colors"
+            >
+              Get Started
+            </a>
             <a
               href="/login"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-1.5 text-white/90 hover:bg-white/10"
@@ -52,12 +58,20 @@ export default function DashboardPage() {
               Take a 5-minute quiz to get your Afrofeast Score™ and a personalized heritage plan,
               with guidance from our cultural consultants on WhatsApp.
             </p>
-            <a
-              href="/quiz"
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-[#F4B942] px-6 py-3 text-[#1E332F] font-medium"
-            >
-              Start the Ghana Quiz →
-            </a>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="/signup"
+                className="inline-flex items-center justify-center rounded-full bg-[#F4B942] px-8 py-3 text-[#1E332F] font-medium hover:bg-[#E8A63A] transition-colors"
+              >
+                Get Started Free →
+              </a>
+              <a
+                href="/quiz"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-white/90 hover:bg-white/10 transition-colors"
+              >
+                Take Quiz First
+              </a>
+            </div>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-white/85">
               <span>Personalized plans</span>
               <span>•</span>
